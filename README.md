@@ -12,7 +12,7 @@ This library enables to store, retrieve, update and delete data from db based on
 
 #### func New
 
-```
+```go
 func  New(path  string, divider  ...string) (*jsondb, error)
 ```
 
@@ -20,7 +20,7 @@ New initializes a new jsondb at the specified path with an optional divider stri
 
 #### type jsondb
 
-```
+```go
 type  jsondb  struct {
 path     string
 mux      *sync.RWMutex
@@ -34,7 +34,7 @@ The jsondb type represents a JSON database.
 
 #### func (db \*jsondb) Insert
 
-```
+```go
 func (db *jsondb) Insert(keysStr  string, value  any) error
 ```
 
@@ -42,7 +42,7 @@ Insert adds a new value to the JSON database using the specified keys.
 
 #### func (db \*jsondb) InsertDir
 
-```
+```go
 func (db *jsondb) InsertDir(dirsStr  string) error
 ```
 
@@ -52,7 +52,7 @@ InsertDir adds directories with the specified directory names if they do not exi
 
 #### func (db \*jsondb) GetAny
 
-```
+```go
 func (db *jsondb) GetAny(keysStr  string) (any, error)
 ```
 
@@ -60,7 +60,7 @@ GetAny returns any stored under the specified key.
 
 #### func (db \*jsondb) GetBool
 
-```
+```go
 func (db *jsondb) GetBool(keysStr  string) (bool, error)
 ```
 
@@ -68,7 +68,7 @@ GetBool returns bool stored under the specified key, returns an error if the val
 
 #### func (db \*jsondb) GetInt
 
-```
+```go
 func (db *jsondb) GetInt(keysStr  string) (int, error)
 ```
 
@@ -76,7 +76,7 @@ GetInt returns int stored under the specified key, returns an error if the value
 
 #### func (db \*jsondb) GetFloat
 
-```
+```go
 func (db *jsondb) GetFloat(keysStr  string) (float64, error)
 ```
 
@@ -84,7 +84,7 @@ GetFloat returns float64 stored under the specified key returns an error if the 
 
 #### func (db \*jsondb) GetString
 
-```
+```go
 func (db *jsondb) GetString(keysStr  string) (string, error)
 ```
 
@@ -92,7 +92,7 @@ GetString returns string stored under the specified key, returns an error if the
 
 #### func (db \*jsondb) GetMap
 
-```
+```go
 func (db *jsondb) GetMap(keysStr  string) (map[string]any, error)
 ```
 
@@ -100,7 +100,7 @@ GetMap returns map[string]any stored under the specified key, returns an error i
 
 #### func (db \*jsondb) GetAllMaps
 
-```
+```go
 func (db *jsondb) GetAllMaps(keysStr  string) ([]map[string]any, error)
 ```
 
@@ -108,7 +108,7 @@ GetAllMaps returns all files stored under the specified key converted to []map[s
 
 #### func (db \*jsondb) GetStruct
 
-```
+```go
 func (db *jsondb) GetStruct(keysStr  string, dst  any) error
 ```
 
@@ -118,7 +118,7 @@ GetStruct returns a result stored under the specified key in the value pointed t
 
 #### func (db \*jsondb) Delete
 
-```
+```go
 func (db *jsondb) Delete(keysStr  string) error
 ```
 
