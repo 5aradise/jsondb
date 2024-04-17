@@ -50,6 +50,13 @@ InsertDir adds directories with the specified directory names if they do not exi
 
 ## Get
 
+#### func (db \*jsondb) GetLen
+
+```go
+func (db *Jsondb) GetLen(keysStr string) (int, error)
+```
+GetLen returns the number of entries in the directory.
+
 #### func (db \*jsondb) GetAny
 
 ```go

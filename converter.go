@@ -4,7 +4,7 @@ import "encoding/json"
 
 // MapToStruct converts a map to a struct.
 //
-// dst: The destination variable to store the converted struct value.
+// dst: Pointer to destination variable to store the converted struct value.
 // src: The map containing the data to be converted to a struct.
 // error: Returns an error if any.
 func MapToStruct(dst any, src map[string]any) error {

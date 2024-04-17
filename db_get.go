@@ -1,5 +1,35 @@
 package jsondb
 
+import (
+	"os"
+	"path"
+)
+
+// GetLen retrieves the number of entries in a directory specified by the given keys.
+//
+// keysStr: A string representing the path to the directory.
+// Returns the number of entries in the directory.
+func (db *Jsondb) GetLen(keysStr string) (int, error) {
+	keys, err := parseArgs(keysStr)
+	if err != nil {
+		return 0, err
+	}
+
+	db.mux.RLock()
+	defer db.mux.RUnlock()
+
+	f, err := os.Open(path.Join(append([]string{db.path}, keys...)...))
+	if err != nil {
+		return 0, err
+	}
+	files, err := f.Readdir(0)
+	if err != nil {
+		return 0, err
+	}
+
+	return len(files), nil
+}
+
 // GetAny retrieves an any value from the JSON database based on the specified keys.
 //
 // keysStr: A string representing the path to the desired integer value.
@@ -134,7 +164,7 @@ func (db *Jsondb) GetMap(keysStr string) (map[string]any, error) {
 // GetStruct retrieves a struct value from the JSON database based on the specified keys.
 //
 // keysStr: A string representing the path to the desired integer value.
-// dst: The destination variable to store the retrieved struct value.
+// dst: Pointer to destination variable to store the retrieved struct value.
 // Returns an error if any.
 func (db *Jsondb) GetStruct(keysStr string, dst any) error {
 	val, err := db.GetMap(keysStr)
