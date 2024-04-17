@@ -11,7 +11,7 @@ import (
 // keysStr: A string representing the path to the desired values.
 // error: An error if any occurs during the delete operation.
 // Returns: An error if any occurs during the delete operation.
-func (db *jsondb) Delete(keysStr string) error {
+func (db *Jsondb) Delete(keysStr string) error {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return err

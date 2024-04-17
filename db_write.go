@@ -13,7 +13,7 @@ import (
 // - entryPath: the path where the entry will be written.
 // Returns:
 // - error: an error if any occurs during the write operation.
-func (db *jsondb) writeEntry(entry any, entryPath string) error {
+func (db *Jsondb) writeEntry(entry any, entryPath string) error {
 	data, err := json.Marshal(entry)
 	if err != nil {
 		return err
@@ -27,7 +27,7 @@ func (db *jsondb) writeEntry(entry any, entryPath string) error {
 //
 // dirs: A slice of strings representing the names of the directories to be added.
 // Returns the path of the last created directory and an error if any.
-func (db *jsondb) createDirs(dirs []string) (string, error) {
+func (db *Jsondb) createDirs(dirs []string) (string, error) {
 	path := db.path
 	for _, dir := range dirs {
 		path = filepath.Join(path, dir)

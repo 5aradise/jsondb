@@ -11,7 +11,7 @@ import (
 //
 // keys: A slice of strings representing the path to the desired value.
 // Returns any type of value found at the given keys and an error if any.
-func (db *jsondb) read(keys []string) (any, error) {
+func (db *Jsondb) read(keys []string) (any, error) {
 	pathKeys, lastKey := keys[:len(keys)-1], keys[len(keys)-1]
 
 	path := filepath.Join(append([]string{db.path}, pathKeys...)...)
@@ -44,7 +44,7 @@ func (db *jsondb) read(keys []string) (any, error) {
 //
 // entryPath: A string representing the path to the desired entry.
 // Returns the entry found at the entryPath and an error if any.
-func (db *jsondb) readEntry(entryPath string) (entry map[string]any, err error) {
+func (db *Jsondb) readEntry(entryPath string) (entry map[string]any, err error) {
 	data, err := os.ReadFile(entryPath)
 	if err != nil {
 		return
@@ -58,7 +58,7 @@ func (db *jsondb) readEntry(entryPath string) (entry map[string]any, err error) 
 //
 // keys: A slice of strings representing the path to the desired entries.
 // Returns a slice of entries found at the given keys and an error if any.
-func (db *jsondb) readAll(keys []string) (any, error) {
+func (db *Jsondb) readAll(keys []string) (any, error) {
 	path := filepath.Join(append([]string{db.path}, keys...)...)
 	f, err := os.Open(path)
 	if err != nil {

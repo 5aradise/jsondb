@@ -16,19 +16,18 @@ var (
 	ErrorTypeConverting = errors.New("can't convert type")
 )
 
-type jsondb struct {
+type Jsondb struct {
 	path    string
 	mux     *sync.RWMutex
 	divider string
 }
 
-
-// New initializes a new jsondb at the specified path with an optional divider string.
+// New initializes a new json database at the specified path with an optional divider string.
 //
 // path: the file path where the jsondb will be created.
 // divider: an optional string used to divide nested keys in the jsondb.
-// Returns a pointer to the newly initialized jsondb and an error.
-func New(path string, divider ...string) (*jsondb, error) {
+// Returns a pointer to the newly initialized Jsondb instance and an error.
+func New(path string, divider ...string) (*Jsondb, error) {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		err := os.Mkdir(path, DirDefault)
 		if err != nil {
@@ -36,7 +35,7 @@ func New(path string, divider ...string) (*jsondb, error) {
 		}
 	}
 
-	db := jsondb{
+	db := Jsondb{
 		path:    path,
 		mux:     &sync.RWMutex{},
 		divider: ".",
@@ -47,4 +46,8 @@ func New(path string, divider ...string) (*jsondb, error) {
 	}
 
 	return &db, nil
+}
+
+func (db *Jsondb) Divider() string {
+	return db.divider
 }

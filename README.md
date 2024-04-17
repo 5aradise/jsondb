@@ -13,15 +13,15 @@ This library enables to store, retrieve, update and delete data from db based on
 #### func New
 
 ```go
-func  New(path  string, divider  ...string) (*jsondb, error)
+func  New(path  string, divider  ...string) (*Jsondb, error)
 ```
 
-New initializes a new jsondb at the specified path with an optional divider string.
+New initializes a new json database at the specified path with an optional divider string.
 
 #### type jsondb
 
 ```go
-type  jsondb  struct {
+type  Jsondb  struct {
 path     string
 mux      *sync.RWMutex
 divider  string

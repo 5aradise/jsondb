@@ -4,7 +4,7 @@ package jsondb
 //
 // keysStr: A string representing the path to the desired integer value.
 // Returns the any value found at the given keys and an error if not.
-func (db *jsondb) GetAny(keysStr string) (any, error) {
+func (db *Jsondb) GetAny(keysStr string) (any, error) {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return nil, err
@@ -20,7 +20,7 @@ func (db *jsondb) GetAny(keysStr string) (any, error) {
 //
 // keysStr: A string representing the path to the desired integer value.
 // Returns the integer value found at the given keys and an error if any.
-func (db *jsondb) GetInt(keysStr string) (int, error) {
+func (db *Jsondb) GetInt(keysStr string) (int, error) {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return 0, err
@@ -43,7 +43,7 @@ func (db *jsondb) GetInt(keysStr string) (int, error) {
 //
 // keysStr: A string representing the path to the desired integer value.
 // Returns the float64 value found at the given keys and an error if any.
-func (db *jsondb) GetFloat(keysStr string) (float64, error) {
+func (db *Jsondb) GetFloat(keysStr string) (float64, error) {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return 0, err
@@ -66,7 +66,7 @@ func (db *jsondb) GetFloat(keysStr string) (float64, error) {
 //
 // keysStr: A string representing the path to the desired integer value.
 // Returns the string value found at the given keys and an error if any.
-func (db *jsondb) GetString(keysStr string) (string, error) {
+func (db *Jsondb) GetString(keysStr string) (string, error) {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return "", err
@@ -89,7 +89,7 @@ func (db *jsondb) GetString(keysStr string) (string, error) {
 //
 // keysStr: A string representing the path to the desired integer value.
 // Returns the boolean value found at the given keys and an error if any.
-func (db *jsondb) GetBool(keysStr string) (bool, error) {
+func (db *Jsondb) GetBool(keysStr string) (bool, error) {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return false, err
@@ -112,7 +112,7 @@ func (db *jsondb) GetBool(keysStr string) (bool, error) {
 //
 // keysStr: A string representing the path to the desired integer value.
 // Returns the map value found at the given keys and an error if any.
-func (db *jsondb) GetMap(keysStr string) (map[string]any, error) {
+func (db *Jsondb) GetMap(keysStr string) (map[string]any, error) {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return nil, err
@@ -136,7 +136,7 @@ func (db *jsondb) GetMap(keysStr string) (map[string]any, error) {
 // keysStr: A string representing the path to the desired integer value.
 // dst: The destination variable to store the retrieved struct value.
 // Returns an error if any.
-func (db *jsondb) GetStruct(keysStr string, dst any) error {
+func (db *Jsondb) GetStruct(keysStr string, dst any) error {
 	val, err := db.GetMap(keysStr)
 	if err != nil {
 		return err
@@ -149,7 +149,7 @@ func (db *jsondb) GetStruct(keysStr string, dst any) error {
 //
 // keysStr: A string representing the path to the desired integer value.
 // Returns an array of map values found at the given keys and an error if any.
-func (db *jsondb) GetAllMaps(keysStr string) ([]map[string]any, error) {
+func (db *Jsondb) GetAllMaps(keysStr string) ([]map[string]any, error) {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return nil, err

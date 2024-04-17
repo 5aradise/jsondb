@@ -11,7 +11,7 @@ import (
 // keysStr: A string representing the path where the value is stored.
 // value: The value to be added.
 // Returns an error if any.
-func (db *jsondb) Insert(keysStr string, value any) error {
+func (db *Jsondb) Insert(keysStr string, value any) error {
 	keys, err := parseArgs(keysStr)
 	if err != nil {
 		return err
@@ -54,7 +54,7 @@ func (db *jsondb) Insert(keysStr string, value any) error {
 //
 // dirsStr: A string representing the names of the directories to be added.
 // Returns an error if any.
-func (db *jsondb) InsertDir(dirsStr string) error {
+func (db *Jsondb) InsertDir(dirsStr string) error {
 	dirs, err := parseArgs(dirsStr)
 	if err != nil {
 		return err
